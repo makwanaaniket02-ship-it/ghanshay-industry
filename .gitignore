@@ -1,0 +1,9 @@
+# dependencies
+node_modules/
+# database (customer data - never push)
+data.db
+data.db-journal
+*.backup
+bookings.json
+# local AI skill files (reinstall with: npx -y ui-ux-pro-max-cli init --ai opencode)
+.opencode/

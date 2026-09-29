@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Panel - <%= site.company %></title>
+<link rel="stylesheet" href="/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="a-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="a-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="a-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="a-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="a-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="a-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="a-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></symbol>
+  </defs>
+</svg>
+
+<header class="header">
+  <div class="container nav">
+    <span class="logo"><svg class="ic" aria-hidden="true"><use href="#a-lock"/></svg>Admin <span>Panel</span></span>
+    <div class="nav-cta">
+      <a class="btn btn-sm btn-outline" style="color:#fff;border-color:#6B5F4C;background:transparent" href="/" target="_blank"><svg class="ic" aria-hidden="true"><use href="#a-eye"/></svg>View site</a>
+      <a class="btn btn-sm btn-gold" href="/admin/logout"><svg class="ic" aria-hidden="true"><use href="#a-out"/></svg>Logout</a>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:24px;padding-bottom:40px">
+  <h2><%= site.company %> — Dashboard</h2>
+  <p class="muted"><%= site.owners.join(' & ') %> • <%= site.timings %></p>
+
+  <div class="grid3" style="margin-bottom:24px">
+    <div class="mini"><svg class="ic" aria-hidden="true"><use href="#a-cal"/></svg><b style="font-size:26px;display:block"><%= stats.bookings %></b><p>Total bookings</p></div>
+    <div class="mini"><svg class="ic" aria-hidden="true"><use href="#a-phone"/></svg><b style="font-size:26px;display:block"><%= stats.callbacks %></b><p>Callback requests</p></div>
+    <div class="mini"><svg class="ic" aria-hidden="true"><use href="#a-chat"/></svg><b style="font-size:26px;display:block"><%= stats.messages %></b><p>Messages</p></div>
+  </div>
+
+  <h2><svg class="ic" aria-hidden="true"><use href="#a-cal"/></svg> Visit bookings (<%= bookings.length %>)</h2>
+  <div class="table-wrap">
+  <table class="admin-table">
+    <tr><th>ID</th><th>Name / Mobile</th><th>Date • Time</th><th>Machine</th><th>Phase / Condition</th><th>Type / Note</th><th><span style="position:absolute;left:-9999px">Delete</span></th></tr>
+    <% if (!bookings.length) { %><tr><td colspan="7" class="muted">No bookings yet.</td></tr><% } %>
+    <% bookings.forEach(b => { %>
+    <tr id="bookings-<%= b.id %>">
+      <td>#<%= b.id %></td>
+      <td><b><%= b.name %></b><br/><a href="tel:<%= b.mobile %>"><%= b.mobile %></a></td>
+      <td><%= b.date %><br/><%= b.time %></td>
+      <td><%= b.machine %></td>
+      <td><%= [b.phase, b.cond].filter(Boolean).join('<br/>') %></td>
+      <td><%= b.biz %><br/><small><%= b.note %></small><br/><small class="muted"><%= b.created %></small></td>
+      <td><button class="icon-btn" aria-label="Delete booking #<%= b.id %>" onclick="delRow('bookings', <%= b.id %>)"><svg class="ic" aria-hidden="true"><use href="#a-trash"/></svg></button></td>
+    </tr>
+    <% }) %>
+  </table>
+  </div>
+
+  <h2 style="margin-top:28px"><svg class="ic" aria-hidden="true"><use href="#a-phone"/></svg> Callback requests (<%= callbacks.length %>)</h2>
+  <div class="table-wrap">
+  <table class="admin-table">
+    <tr><th>ID</th><th>Mobile</th><th>Time</th><th><span style="position:absolute;left:-9999px">Delete</span></th></tr>
+    <% if (!callbacks.length) { %><tr><td colspan="4" class="muted">No requests yet.</td></tr><% } %>
+    <% callbacks.forEach(c => { %>
+    <tr id="callbacks-<%= c.id %>">
+      <td>#<%= c.id %></td>
+      <td><a href="tel:<%= c.mobile %>"><b><%= c.mobile %></b></a></td>
+      <td><%= c.created %></td>
+      <td><button class="icon-btn" aria-label="Delete callback #<%= c.id %>" onclick="delRow('callbacks', <%= c.id %>)"><svg class="ic" aria-hidden="true"><use href="#a-trash"/></svg></button></td>
+    </tr>
+    <% }) %>
+  </table>
+  </div>
+
+  <h2 style="margin-top:28px"><svg class="ic" aria-hidden="true"><use href="#a-chat"/></svg> Messages (<%= messages.length %>)</h2>
+  <div class="table-wrap">
+  <table class="admin-table">
+    <tr><th>ID</th><th>Name</th><th>Message</th><th>Time</th><th><span style="position:absolute;left:-9999px">Delete</span></th></tr>
+    <% if (!messages.length) { %><tr><td colspan="5" class="muted">No messages yet.</td></tr><% } %>
+    <% messages.forEach(m => { %>
+    <tr id="messages-<%= m.id %>">
+      <td>#<%= m.id %></td>
+      <td><b><%= m.name %></b></td>
+      <td><%= m.message %></td>
+      <td><%= m.created %></td>
+      <td><button class="icon-btn" aria-label="Delete message #<%= m.id %>" onclick="delRow('messages', <%= m.id %>)"><svg class="ic" aria-hidden="true"><use href="#a-trash"/></svg></button></td>
+    </tr>
+    <% }) %>
+  </table>
+  </div>
+</div>
+
+<script>
+async function delRow(type, id) {
+  if (!confirm('Delete this entry?')) return;
+  const r = await fetch('/admin/api/' + type + '/' + id, { method: 'DELETE' });
+  if ((await r.json()).ok) document.getElementById(type + '-' + id).remove();
+  else alert('Could not delete');
+}
+</script>
+</body>
+</html>
