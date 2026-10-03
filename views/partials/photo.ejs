@@ -1,0 +1,10 @@
+<% /* Reusable machine photo. If p.photo is empty, a "Photo coming soon" box shows. */ %>
+<% const _ic = typeof icon !== 'undefined' ? icon : 'i-box'; %>
+<% if (photo) { %>
+<img class="photo-box" src="<%= photo %>" alt="<%= name %>" loading="lazy" />
+<% } else { %>
+<div class="photo-box photo-placeholder" role="img" aria-label="<%= name %> — photo coming soon">
+  <svg class="ic ic-lg" aria-hidden="true"><use href="#<%= _ic %>"/></svg>
+  <span>Photo coming soon</span>
+</div>
+<% } %>

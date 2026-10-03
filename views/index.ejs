@@ -12,27 +12,7 @@
 </head>
 <body>
 
-<!-- SVG icon set (no emoji icons) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/></symbol>
-    <symbol id="i-diamond" viewBox="0 0 24 24"><path d="M2.7 10.3a2.4 2.4 0 0 0 0 3.4l7.6 7.6a.5.5 0 0 0 .7 0l7.6-7.6a2.4 2.4 0 0 0 0-3.4L12 3 2.7 10.3Z"/></symbol>
-    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
-    <symbol id="i-box" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
-    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-  </defs>
-</svg>
+<%- include('partials/icons') %>
 
 <a href="#machines" style="position:absolute;left:-9999px" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to machines</a>
 
@@ -45,17 +25,17 @@
 
 <header class="header">
   <div class="container nav">
-    <a href="#home" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Ghanshyam<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <a href="#home" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
     <nav class="links" id="navLinks" aria-label="Main menu">
       <a href="#home">Home</a>
       <a href="#machines">Machines</a>
       <a href="#b2b-b2c">B2B / B2C</a>
-      <a href="#booking">Book a Visit</a>
+      <a href="/book-visit">Book a Visit</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
       <a class="btn btn-sm btn-whatsapp" data-wa="<%= waDefault %>" href="<%= waDefault %>" target="_blank"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
-      <a class="btn btn-sm btn-primary" href="#booking">Book a Visit</a>
+      <a class="btn btn-sm btn-primary" href="/book-visit">Book a Visit</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </div>
@@ -68,7 +48,7 @@
       <h1>See the machine running <span class="amber">before you pay a rupee.</span></h1>
       <p class="sub"><%= site.products.map(p=>p.name).join(', ') %> — for factories (B2B) and for single buyers and artisans (B2C). Walk into our workshop, watch the live demo, then decide.</p>
       <div class="hero-btns">
-        <a href="#booking" class="btn btn-primary"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Book a workshop visit</a>
+        <a href="/book-visit" class="btn btn-primary"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Book a workshop visit</a>
         <a href="#machines" class="btn btn-outline">See the machines <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="trust-points">
@@ -112,39 +92,42 @@
     <h2>Three machines. Every one demo-ready.</h2>
     <p class="muted">To add a product later, just edit the products list in <b>config.js</b>.</p>
     <% const iconMap = {'wrench':'i-wrench','layers':'i-layers','diamond':'i-diamond'}; %>
-    <div class="grid" id="productGrid">
+    <div class="machine-rows" id="productGrid">
       <% site.products.forEach((p, idx) => { %>
-      <article class="card">
-        <div class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#<%= iconMap[p.icon] || 'i-box' %>"/></svg></div>
-        <span class="tag">B2B + B2C</span>
-        <h3><%= p.name %></h3>
-        <p><%= p.desc %></p>
-        <ul class="check-list"><% p.points.forEach(pt => { %><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><%= pt %></span></li><% }) %></ul>
-        <% if (p.phases || p.conditions) { %>
-        <div class="variant-box">
-          <% if (p.phases) { %>
-          <label><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg>Power requirement
+      <article class="machine-row">
+        <div class="mr-main">
+          <div class="mr-photo"><%- include('partials/photo', {photo: p.photo, name: p.name, icon: iconMap[p.icon] || 'i-box'}) %></div>
+          <div>
+            <span class="mr-tag">B2B + B2C • Demo ready</span>
+            <h3><a href="/machine/<%= p.slug %>"><%= p.name %></a></h3>
+            <p><%= p.desc %></p>
+            <ul class="mr-points"><% p.points.forEach(pt => { %><li><span class="tick"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span><%= pt %></span></li><% }) %></ul>
+          </div>
+        </div>
+        <div class="mr-side">
+          <% if (p.phases || p.conditions) { %>
+          <div class="variant-box">
+            <% if (p.phases) { %>
             <select id="phase-<%= idx %>" aria-label="<%= p.name %> - power requirement">
               <% p.phases.forEach(ph => { %><option><%= ph %></option><% }) %>
             </select>
-          </label>
-          <% } %>
-          <% if (p.conditions) { %>
-          <label><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>Machine condition
+            <% } %>
+            <% if (p.conditions) { %>
             <select id="cond-<%= idx %>" aria-label="<%= p.name %> - machine condition">
               <% p.conditions.forEach(c => { %><option><%= c %></option><% }) %>
             </select>
-          </label>
+            <% } %>
+          </div>
           <% } %>
-        </div>
-        <% } %>
-        <div class="card-btns">
-          <% if (p.phases || p.conditions) { %>
-          <button class="btn btn-sm btn-primary" onclick="bookMachineWithVariant('<%= p.name.replace(/'/g,"\\'") %>', <%= idx %>)">Book a demo</button>
-          <% } else { %>
-          <button class="btn btn-sm btn-primary" onclick="bookMachine('<%= p.name.replace(/'/g,"\\'") %>')">Book a demo</button>
-          <% } %>
-          <a class="btn btn-sm btn-outline" href="<%= waLink('Price for ' + p.name + ', please') %>" target="_blank">Ask price</a>
+          <div class="mr-btns">
+            <% if (p.phases || p.conditions) { %>
+            <button class="btn btn-sm btn-primary" onclick="goBooking('<%= p.slug %>', <%= idx %>)">Book a demo</button>
+            <% } else { %>
+            <button class="btn btn-sm btn-primary" onclick="goBooking('<%= p.slug %>', -1)">Book a demo</button>
+            <% } %>
+            <a class="btn btn-sm btn-gold" href="/machine/<%= p.slug %>">Full details <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-sm btn-outline" href="<%= waLink('Price for ' + p.name + ', please') %>" target="_blank">Ask price</a>
+          </div>
         </div>
       </article>
       <% }) %>
@@ -170,7 +153,7 @@
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Billing, transport &amp; installation help</span></li>
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Operator training + warranty</span></li>
         </ul>
-        <a href="#booking" class="btn btn-sm btn-primary" onclick="setBiz('B2B - Factory / Company')">Book a B2B visit</a>
+        <a href="/book-visit?biz=B2B" class="btn btn-sm btn-primary">Book a B2B visit</a>
       </div>
       <div class="box">
         <h3><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>B2C — single buyers &amp; artisans</h3>
@@ -179,69 +162,23 @@
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>See the demo, then buy</span></li>
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Explained in plain language</span></li>
         </ul>
-        <a href="#booking" class="btn btn-sm btn-primary" onclick="setBiz('B2C - Single buyer / Artisan')">Book a B2C visit</a>
+        <a href="/book-visit?biz=B2C" class="btn btn-sm btn-primary">Book a B2C visit</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="booking">
+<section class="section" id="visit">
   <div class="container">
-    <span class="eyebrow">Plan your trip</span>
-    <h2>Book a visit — simple form, no OTP</h2>
-    <p class="muted">Fill this in and we will keep the machine ready for your demo. Saved securely on our server.</p>
-    <div class="booking-grid">
-      <form id="bookForm" class="form" novalidate>
-        <div id="formErr" class="form-errors" role="alert" tabindex="-1" hidden></div>
-        <label>Full name *<input id="fName" placeholder="e.g. Aniket Makwana" required autocomplete="name" /></label>
-        <label>Mobile number *<input id="fMobile" placeholder="10-digit mobile" maxlength="10" inputmode="numeric" required autocomplete="tel" aria-describedby="eMobile" /><small class="err" id="eMobile" role="alert"></small></label>
-        <div class="row2">
-          <label>Date *<input type="date" id="fDate" required /></label>
-          <label>Time slot *<select id="fTime" required>
-            <option value="">Select…</option>
-            <% site.timeSlots.forEach(s => { %><option><%= s %></option><% }) %>
-          </select></label>
-        </div>
-        <div class="row2">
-          <label>Machine you want to see<select id="fMachine">
-            <% site.products.forEach(p => { %><option><%= p.name %></option><% }) %>
-            <option>Not sure — show me everything</option>
-          </select></label>
-          <label>You are<select id="fBiz">
-            <option>B2C - Single buyer / Artisan</option>
-            <option>B2B - Factory / Company</option>
-          </select></label>
-        </div>
-        <div class="row2">
-          <label><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg> Power requirement<select id="fPhase">
-            <option value="">Select if needed</option>
-            <% site.phases.forEach(ph => { %><option><%= ph %></option><% }) %>
-          </select></label>
-          <label><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg> Machine condition<select id="fCond">
-            <option value="">Select if needed</option>
-            <% site.conditions.forEach(c => { %><option><%= c %></option><% }) %>
-          </select></label>
-        </div>
-        <label>Note (optional)<input id="fNote" placeholder="Anything we should keep ready?" /></label>
-        <button type="submit" id="bookBtn" class="btn btn-primary btn-full">Confirm my visit</button>
-        <p id="bookMsg" class="success" aria-live="polite"></p>
-        <div id="waBox" style="display:none">
-          <a id="waConfirm" target="_blank" class="btn btn-whatsapp btn-full" href="#"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Confirm on WhatsApp</a>
-        </div>
-      </form>
+    <div class="cta-banner">
       <div>
-        <div class="info-box">
-          <h3><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Find us</h3>
-          <p><b><%= site.company %></b><br/><%= site.address1 %><br/><%= site.address2 %></p>
-          <p><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg> <%= site.owners[0] %> &amp; <%= site.owners[1] %></p>
-          <p>Phone: <b><%= phoneDisplay %></b></p>
-          <p><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> <%= site.shopHoursMorning %><br/><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> <%= site.shopHoursEvening %><br/>Sunday closed · <span data-open-badge></span></p>
-          <a class="btn btn-sm btn-outline" target="_blank" href="<%= site.mapLink %>">Open in Google Maps <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-        <div class="info-box">
-          <h3>Recent bookings (<span id="bookCount">0</span>)</h3>
-          <div id="bookList" class="book-list"><p class="muted">Loading…</p></div>
-        </div>
+        <span class="eyebrow">Visit the workshop</span>
+        <h2>Come, watch the machine run, then decide.</h2>
+        <p>Booking takes less than a minute — no OTP, no advance. We keep the machine ready for your demo.</p>
+      </div>
+      <div class="cta-side">
+        <a href="/book-visit" class="btn btn-primary"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Book a visit</a>
+        <p class="muted" style="margin:8px 0 0"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> <%= site.shopHoursMorning %> · <%= site.shopHoursEvening %></p>
       </div>
     </div>
   </div>
@@ -271,7 +208,7 @@
 
 <footer>
   <div class="container foot">
-    <div><b>Ghanshyam Industry</b> • <%= site.address2 %> • B2B + B2C</div>
+    <div><b>Priyal Industry</b> • <%= site.address2 %> • B2B + B2C</div>
     <div class="muted">© 2026 • <%= site.timings %></div>
   </div>
 </footer>

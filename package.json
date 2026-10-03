@@ -1,7 +1,7 @@
 {
-  "name": "ghanshyam-industry",
+  "name": "priyal-industry",
   "version": "1.0.0",
-  "description": "Ghanshyam Industry, Damnagar - Diamond Machines website in Node.js (Express + EJS)",
+  "description": "Priyal Industry, Damnagar - Diamond Machines website in Node.js (Express + EJS)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

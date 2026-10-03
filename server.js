@@ -1,5 +1,5 @@
 // ============================================
-// Ghanshyam Industry - server (Express + SQLite + EJS)
+// Priyal Industry - server (Express + SQLite + EJS)
 // Routes:
 //   /               → website
 //   /api/book       → visit booking (POST)
@@ -53,6 +53,19 @@ function adminAuth(req, res, next) {
 // ---------- Public page ----------
 app.get('/', (req, res) => {
   res.render('index', { site, phoneDisplay: phoneDisplay(), waLink, waDefault: waLink() });
+});
+
+// ---------- Machine detail page ----------
+app.get('/machine/:slug', (req, res) => {
+  const p = site.products.find(x => x.slug === req.params.slug);
+  if (!p) return res.status(404).send('Machine not found');
+  const others = site.products.filter(x => x.slug !== p.slug);
+  res.render('machine', { site, product: p, others, phoneDisplay: phoneDisplay(), waLink, waDefault: waLink() });
+});
+
+// ---------- Booking page (separate page, not on home) ----------
+app.get('/book-visit', (req, res) => {
+  res.render('book-visit', { site, phoneDisplay: phoneDisplay(), waLink, waDefault: waLink() });
 });
 
 // ---------- Public API ----------

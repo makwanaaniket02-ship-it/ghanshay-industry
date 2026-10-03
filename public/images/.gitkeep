@@ -1,0 +1,5 @@
+# Machine photos go here.
+# How to add a photo later:
+#   1. Copy the photo file into this folder, e.g. manual-machine.jpg
+#   2. In config.js, set photo: "/images/manual-machine.jpg" for that product
+#   3. Restart the server. Done.

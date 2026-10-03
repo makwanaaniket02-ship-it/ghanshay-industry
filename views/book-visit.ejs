@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Workshop Visit - <%= site.company %></title>
+<meta name="description" content="Book a visit to <%= site.company %>, <%= site.city %>. See the machines running live." />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<%- include('partials/icons') %>
+
+<div class="topbar">
+  <div class="container topbar-flex">
+    <span><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Owners: <b><%= site.owners.join(' & ') %></b></span>
+    <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><b><%= site.shopHoursMorning %></b> &nbsp;|&nbsp; <b><%= site.shopHoursEvening %></b> &nbsp; <span class="open-badge" data-open-badge></span></span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <nav class="links" id="navLinks" aria-label="Main menu">
+      <a href="/">Home</a>
+      <a href="/#machines">Machines</a>
+      <a href="/book-visit">Book a Visit</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-sm btn-whatsapp" href="<%= waDefault %>" target="_blank"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:22px">
+  <p class="crumbs"><a href="/">Home</a> / <b>Book a Visit</b></p>
+</div>
+
+<section class="section" style="padding-top:18px">
+  <div class="container">
+    <span class="eyebrow">Plan your trip</span>
+    <h2>Book a visit — simple form, no OTP</h2>
+    <p class="muted">Fill this in and we will keep the machine ready for your demo. Saved securely on our server.</p>
+    <div class="booking-grid">
+      <form id="bookForm" class="form" novalidate>
+        <div id="formErr" class="form-errors" role="alert" tabindex="-1" hidden></div>
+        <label>Full name *<input id="fName" placeholder="e.g. Aniket Makwana" required autocomplete="name" /></label>
+        <label>Mobile number *<input id="fMobile" placeholder="10-digit mobile" maxlength="10" inputmode="numeric" required autocomplete="tel" aria-describedby="eMobile" /><small class="err" id="eMobile" role="alert"></small></label>
+        <div class="row2">
+          <label>Date *<input type="date" id="fDate" required /></label>
+          <label>Time slot *<select id="fTime" required>
+            <option value="">Select…</option>
+            <% site.timeSlots.forEach(s => { %><option><%= s %></option><% }) %>
+          </select></label>
+        </div>
+        <div class="row2">
+          <label>Machine you want to see<select id="fMachine">
+            <% site.products.forEach(p => { %><option><%= p.name %></option><% }) %>
+            <option>Not sure — show me everything</option>
+          </select></label>
+          <label>You are<select id="fBiz">
+            <option>B2C - Single buyer / Artisan</option>
+            <option>B2B - Factory / Company</option>
+          </select></label>
+        </div>
+        <div class="row2">
+          <label><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg> Power requirement<select id="fPhase">
+            <option value="">Select if needed</option>
+            <% site.phases.forEach(ph => { %><option><%= ph %></option><% }) %>
+          </select></label>
+          <label><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg> Machine condition<select id="fCond">
+            <option value="">Select if needed</option>
+            <% site.conditions.forEach(c => { %><option><%= c %></option><% }) %>
+          </select></label>
+        </div>
+        <label>Note (optional)<input id="fNote" placeholder="Anything we should keep ready?" /></label>
+        <button type="submit" id="bookBtn" class="btn btn-primary btn-full">Confirm my visit</button>
+        <p id="bookMsg" class="success" aria-live="polite"></p>
+        <div id="waBox" style="display:none">
+          <a id="waConfirm" target="_blank" class="btn btn-whatsapp btn-full" href="#"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Confirm on WhatsApp</a>
+        </div>
+      </form>
+      <div>
+        <div class="info-box">
+          <h3><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Find us</h3>
+          <p><b><%= site.company %></b><br/><%= site.address1 %><br/><%= site.address2 %></p>
+          <p><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg> <%= site.owners[0] %> &amp; <%= site.owners[1] %></p>
+          <p>Phone: <b><%= phoneDisplay %></b></p>
+          <p><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> <%= site.shopHoursMorning %><br/><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> <%= site.shopHoursEvening %><br/>Sunday closed · <span data-open-badge></span></p>
+          <a class="btn btn-sm btn-outline" target="_blank" href="<%= site.mapLink %>">Open in Google Maps <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="info-box">
+          <h3>Recent bookings (<span id="bookCount">0</span>)</h3>
+          <div id="bookList" class="book-list"><p class="muted">Loading…</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div><b>Priyal Industry</b> • <%= site.address2 %> • B2B + B2C</div>
+    <div class="muted">© 2026 • <%= site.timings %></div>
+  </div>
+</footer>
+
+<script>
+  window.SITE_PHONE = "<%= phoneDisplay %>";
+  window.WA_DEFAULT = "<%= waDefault %>";
+</script>
+<script src="/app.js"></script>
+</body>
+</html>

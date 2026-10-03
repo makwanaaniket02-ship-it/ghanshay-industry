@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= product.name %> - <%= site.company %>, <%= site.city %></title>
+<meta name="description" content="<%= product.name %>: <%= product.desc %>" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<%- include('partials/icons') %>
+
+<div class="topbar">
+  <div class="container topbar-flex">
+    <span><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Owners: <b><%= site.owners.join(' & ') %></b></span>
+    <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><b><%= site.shopHoursMorning %></b> &nbsp;|&nbsp; <b><%= site.shopHoursEvening %></b></span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <nav class="links" id="navLinks" aria-label="Main menu">
+      <a href="/">Home</a>
+      <a href="/#machines">Machines</a>
+      <a href="/book-visit">Book a Visit</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-sm btn-whatsapp" href="<%= waDefault %>" target="_blank"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:22px">
+  <p class="crumbs"><a href="/">Home</a> / <a href="/#machines">Machines</a> / <b><%= product.name %></b></p>
+</div>
+
+<section class="section" style="padding-top:18px">
+  <div class="container detail-grid">
+    <div>
+      <div class="detail-photo"><%- include('partials/photo', {photo: product.photo, name: product.name, icon: 'i-' + product.icon}) %></div>
+      <span class="eyebrow">Machine details</span>
+      <h1 style="font-size:clamp(26px,4vw,38px);margin-bottom:10px"><%= product.name %></h1>
+      <p class="sub" style="color:var(--ink-soft)"><%= product.desc %></p>
+      <ul class="check-list"><% product.points.forEach(pt => { %><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><%= pt %></span></li><% }) %></ul>
+      <div class="card-btns">
+        <button class="btn btn-primary" id="detailBookBtn"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Book a demo</button>
+        <a class="btn btn-whatsapp" target="_blank" id="detailWaBtn" href="<%= waLink('Price for ' + product.name + ', please') %>"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Ask price on WhatsApp</a>
+      </div>
+      <% if (product.advantages && product.advantages.length) { %>
+      <div class="adv-box">
+        <h2>Advantages</h2>
+        <ul class="check-list">
+          <% product.advantages.forEach(a => { %><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><%= a %></span></li><% }) %>
+        </ul>
+      </div>
+      <% } %>
+    </div>
+    <div>
+      <div class="spec-box">
+        <h2>Full specifications</h2>
+        <table class="spec-table">
+          <% product.details.forEach(d => { %>
+          <tr><th><%= d[0] %></th><td><%= d[1] %></td></tr>
+          <% }) %>
+        </table>
+        <% if (product.phases || product.conditions) { %>
+        <div class="variant-box" style="margin-top:14px">
+          <% if (product.phases) { %>
+          <select id="dPhase" aria-label="<%= product.name %> - power requirement"><% product.phases.forEach(ph => { %><option><%= ph %></option><% }) %></select>
+          <% } %>
+          <% if (product.conditions) { %>
+          <select id="dCond" aria-label="<%= product.name %> - machine condition"><% product.conditions.forEach(c => { %><option><%= c %></option><% }) %></select>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <span class="eyebrow">Also see</span>
+    <h2>Other machines</h2>
+    <div class="grid">
+      <% others.forEach(o => { %>
+      <article class="card">
+        <div class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-<%= o.icon %>"/></svg></div>
+        <h3><%= o.name %></h3>
+        <p><%= o.desc %></p>
+        <div class="card-btns">
+          <a class="btn btn-sm btn-primary" href="/machine/<%= o.slug %>">Full details <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div><b>Priyal Industry</b> • <%= site.address2 %> • B2B + B2C</div>
+    <div class="muted">© 2026 • <%= site.timings %></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').onclick = () => {
+  document.getElementById('navLinks').classList.toggle('open');
+};
+document.getElementById('detailBookBtn').onclick = () => {
+  const ph = document.getElementById('dPhase');
+  const cd = document.getElementById('dCond');
+  let url = '/book-visit?machine=<%= product.slug %>';
+  if (ph) url += '&phase=' + encodeURIComponent(ph.value);
+  if (cd) url += '&cond=' + encodeURIComponent(cd.value);
+  window.location.href = url;
+};
+</script>
+</body>
+</html>
