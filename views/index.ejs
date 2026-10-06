@@ -16,13 +16,6 @@
 
 <a href="#machines" style="position:absolute;left:-9999px" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to machines</a>
 
-<div class="topbar">
-  <div class="container topbar-flex">
-    <span><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Owners: <b><%= site.owners.join(' & ') %></b></span>
-    <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><b><%= site.shopHoursMorning %></b> &nbsp;|&nbsp; <b><%= site.shopHoursEvening %></b> &nbsp; <span class="open-badge" data-open-badge></span></span>
-  </div>
-</div>
-
 <header class="header">
   <div class="container nav">
     <a href="#home" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
@@ -212,8 +205,6 @@
     <div class="muted">© 2026 • <%= site.timings %></div>
   </div>
 </footer>
-
-<a class="float-wa" target="_blank" href="<%= waDefault %>" aria-label="Chat on WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></a>
 
 <script>
   window.SITE_PHONE = "<%= phoneDisplay %>";

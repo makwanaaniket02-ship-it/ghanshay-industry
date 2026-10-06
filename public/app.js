@@ -62,7 +62,8 @@ async function loadBookings() {
     const r = await fetch('/api/bookings');
     const d = await r.json();
     const list = d.bookings || [];
-    document.getElementById('bookCount').textContent = list.length;
+    const bc = document.getElementById('bookCount');
+    if (bc) bc.textContent = list.length;
     if (!list.length) { box.innerHTML = '<p class="muted">No bookings yet — yours could be the first.</p>'; return; }
     box.innerHTML = list.slice(0, 10).map(b => {
       const extra = [b.phase, b.cond].filter(Boolean).join(' • ');
@@ -102,9 +103,25 @@ if (bookForm) {
         body: JSON.stringify({ name, mobile, date, time, machine, phase, cond, biz, note })
       });
       const d = await r.json();
-      if (!d.ok) { showFormErr('formErr', d.error); eM.textContent = d.error; return; }
-      const extra = [phase, cond].filter(Boolean).join(', ');
-      document.getElementById('bookMsg').textContent = `Done, ${name}! Your visit is booked for ${date}, ${time}${extra ? ' (' + extra + ')' : ''}. We will keep the machine ready.`;
+    if (!d.ok) { showFormErr('formErr', d.error); eM.textContent = d.error; return; }
+    const bk = d.booking || {};
+    const extra = [phase, cond].filter(Boolean).join(', ');
+    document.getElementById('bookMsg').textContent = `Done, ${name}! Your visit is booked. Details are below — please save your booking number.`;
+    const slip = document.getElementById('bookSlip');
+    if (slip) {
+      slip.innerHTML =
+        '<h3>Booking confirmed — No. #' + (bk.id || '') + '</h3>' +
+        '<table class="spec-table">' +
+        '<tr><th>Name</th><td>' + name + '</td></tr>' +
+        '<tr><th>Mobile</th><td>' + mobile + '</td></tr>' +
+        '<tr><th>Machine</th><td>' + machine + (extra ? ' (' + extra + ')' : '') + '</td></tr>' +
+        '<tr><th>Date</th><td>' + date + '</td></tr>' +
+        '<tr><th>Time</th><td>' + time + '</td></tr>' +
+        '</table>' +
+        '<p class="muted" style="margin:8px 0 0">Show this booking number when you visit the workshop.</p>';
+      slip.hidden = false;
+      slip.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
       const wa = document.getElementById('waConfirm');
       if (d.waLink && d.waLink !== '#') wa.href = d.waLink;
       else { wa.href = '#'; wa.onclick = (ev) => { ev.preventDefault(); alert('Owner number is not added yet, but your booking is saved on our server.'); return false; }; }

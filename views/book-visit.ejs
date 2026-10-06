@@ -13,13 +13,6 @@
 <body>
 <%- include('partials/icons') %>
 
-<div class="topbar">
-  <div class="container topbar-flex">
-    <span><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Owners: <b><%= site.owners.join(' & ') %></b></span>
-    <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><b><%= site.shopHoursMorning %></b> &nbsp;|&nbsp; <b><%= site.shopHoursEvening %></b> &nbsp; <span class="open-badge" data-open-badge></span></span>
-  </div>
-</div>
-
 <header class="header">
   <div class="container nav">
     <a href="/" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
@@ -83,6 +76,7 @@
         <div id="waBox" style="display:none">
           <a id="waConfirm" target="_blank" class="btn btn-whatsapp btn-full" href="#"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Confirm on WhatsApp</a>
         </div>
+        <div id="bookSlip" class="slip" hidden></div>
       </form>
       <div>
         <div class="info-box">
@@ -94,8 +88,8 @@
           <a class="btn btn-sm btn-outline" target="_blank" href="<%= site.mapLink %>">Open in Google Maps <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
         <div class="info-box">
-          <h3>Recent bookings (<span id="bookCount">0</span>)</h3>
-          <div id="bookList" class="book-list"><p class="muted">Loading…</p></div>
+          <h3><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Your details stay private</h3>
+          <p class="muted" style="margin:0">Bookings and callback requests are <b>not shown</b> to other visitors. Only the workshop owners can see them in the private admin panel.</p>
         </div>
       </div>
     </div>

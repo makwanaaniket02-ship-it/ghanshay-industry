@@ -227,6 +227,9 @@ h1,h2,h3,.logo{font-family:var(--font-head)}
 .form-errors b{display:block;margin-bottom:2px}
 .err{color:var(--red);font-weight:600;font-size:13.5px}
 .success{color:var(--green-dark);font-size:14.5px;margin-top:10px;font-weight:600}
+.slip{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);background:#F2F8F2;padding:18px 20px;margin-top:16px}
+.slip h3{margin-bottom:10px}
+.slip .spec-table th{background:#fff}
 .info-box{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:#fff;margin-bottom:14px;box-shadow:var(--shadow)}
 .info-box h3{margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .info-box h3 .ic{color:var(--amber-dark)}
@@ -265,6 +268,8 @@ footer{background:var(--dark);color:#D9D2C2;padding:26px 0 20px;border-top:4px s
   .row2{grid-template-columns:1fr}
   .section{padding:44px 0}
   .mini-form{flex-direction:column}
+  .nav-cta .btn-whatsapp{display:none}
+  .logo{font-size:17px}
 }
 
 /* ---------- Reduced motion ---------- */
