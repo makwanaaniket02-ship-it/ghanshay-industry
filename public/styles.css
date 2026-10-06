@@ -55,7 +55,13 @@ h1,h2,h3,.logo{font-family:var(--font-head)}
 .links a{color:#D9D2C2;text-decoration:none;font-size:15px;font-weight:600;padding:10px 13px;border-radius:6px;min-height:44px;display:inline-flex;align-items:center;transition:color .18s,background .18s}
 .links a:hover{color:var(--amber);background:rgba(255,255,255,.06)}
 .nav-cta{display:flex;gap:8px;align-items:center}
-.menu-btn{display:none;background:none;border:1px solid #5A5148;color:#fff;border-radius:8px;min-width:44px;min-height:44px;cursor:pointer}
+.menu-btn{display:none;background:none;border:1px solid #5A5148;color:#fff;border-radius:8px;min-width:44px;min-height:44px;cursor:pointer;position:relative}
+.menu-btn .ic{transition:transform .25s ease,opacity .25s ease}
+.menu-btn .ic-close{position:absolute;inset:0;margin:auto;opacity:0;transform:rotate(-90deg) scale(.5)}
+.menu-btn.open .ic-menu{opacity:0;transform:rotate(90deg) scale(.5)}
+.menu-btn.open .ic-close{opacity:1;transform:rotate(0deg) scale(1)}
+.links.open{animation:menuIn .25s ease}
+@keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:var(--radius);text-decoration:none;font-weight:700;border:1px solid transparent;cursor:pointer;font-size:15px;font-family:var(--font-head);letter-spacing:.01em;text-align:center;transition:background .18s,color .18s,border-color .18s,transform .18s}

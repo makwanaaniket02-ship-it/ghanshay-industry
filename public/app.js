@@ -3,7 +3,11 @@
 // Mon–Sat 8:00–13:00 and 14:00–20:00, Sunday closed.
 const menuBtn = document.getElementById('menuBtn');
 if (menuBtn) menuBtn.onclick = () => {
-  document.getElementById('navLinks').classList.toggle('open');
+  const nav = document.getElementById('navLinks');
+  const open = nav.classList.toggle('open');
+  menuBtn.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 };
 
 (function shopStatus() {
