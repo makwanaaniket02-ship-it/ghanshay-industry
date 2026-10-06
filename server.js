@@ -68,6 +68,11 @@ app.get('/book-visit', (req, res) => {
   res.render('book-visit', { site, phoneDisplay: phoneDisplay(), waLink, waDefault: waLink() });
 });
 
+// ---------- Machines listing page ----------
+app.get('/machines', (req, res) => {
+  res.render('machines', { site, phoneDisplay: phoneDisplay(), waLink, waDefault: waLink() });
+});
+
 // ---------- Public API ----------
 app.post('/api/book', (req, res) => {
   const { name, mobile, date, time, machine, phase, cond, biz, note } = req.body || {};

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Machines - <%= site.company %>, <%= site.city %></title>
+<meta name="description" content="All diamond processing machines by <%= site.company %>: <%= site.products.map(p=>p.name).join(', ') %>." />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<%- include('partials/icons') %>
+
+<header class="header">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <nav class="links" id="navLinks" aria-label="Main menu">
+      <a href="/">Home</a>
+      <a href="/machines">Machines</a>
+      <a href="/book-visit">Book a Visit</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-sm btn-whatsapp" href="<%= waDefault %>" target="_blank"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+      <a class="btn btn-sm btn-primary" href="/book-visit">Book a Visit</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg class="ic ic-menu" aria-hidden="true"><use href="#i-menu"/></svg><svg class="ic ic-close" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:22px">
+  <p class="crumbs"><a href="/">Home</a> / <b>Machines</b></p>
+</div>
+
+<section class="section" style="padding-top:18px">
+  <div class="container">
+    <span class="eyebrow">What we sell</span>
+    <h2>Three machines. Every one demo-ready.</h2>
+    <p class="muted">Click any machine for full details, or book a demo to see it running live.</p>
+    <% const iconMap = {'wrench':'i-wrench','layers':'i-layers','diamond':'i-diamond'}; %>
+    <div class="machine-rows" id="productGrid">
+      <% site.products.forEach((p, idx) => { %>
+      <article class="machine-row">
+        <div class="mr-main">
+          <div class="mr-photo"><%- include('partials/photo', {photo: p.photo, name: p.name, icon: iconMap[p.icon] || 'i-box'}) %></div>
+          <div>
+            <span class="mr-tag">B2B + B2C • Demo ready</span>
+            <h3><a href="/machine/<%= p.slug %>"><%= p.name %></a></h3>
+            <p><%= p.desc %></p>
+            <ul class="mr-points"><% p.points.forEach(pt => { %><li><span class="tick"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span><%= pt %></span></li><% }) %></ul>
+          </div>
+        </div>
+        <div class="mr-side">
+          <% if (p.phases || p.conditions) { %>
+          <div class="variant-box">
+            <% if (p.phases) { %>
+            <select id="phase-<%= idx %>" aria-label="<%= p.name %> - power requirement">
+              <% p.phases.forEach(ph => { %><option><%= ph %></option><% }) %>
+            </select>
+            <% } %>
+            <% if (p.conditions) { %>
+            <select id="cond-<%= idx %>" aria-label="<%= p.name %> - machine condition">
+              <% p.conditions.forEach(c => { %><option><%= c %></option><% }) %>
+            </select>
+            <% } %>
+          </div>
+          <% } %>
+          <div class="mr-btns">
+            <% if (p.phases || p.conditions) { %>
+            <button class="btn btn-sm btn-primary" onclick="goBooking('<%= p.slug %>', <%= idx %>)">Book a demo</button>
+            <% } else { %>
+            <button class="btn btn-sm btn-primary" onclick="goBooking('<%= p.slug %>', -1)">Book a demo</button>
+            <% } %>
+            <a class="btn btn-sm btn-gold" href="/machine/<%= p.slug %>">Full details <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-sm btn-outline" href="<%= waLink('Price for ' + p.name + ', please') %>" target="_blank">Ask price</a>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><div><b>Visit the workshop</b><p>Come to Dhasa Road, Damnagar any working day — no appointment needed for a first look.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div><b>Watch it work</b><p>We run the machine in front of you, on real material. Ask anything.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div><b>Take it home</b><p>New or second-hand, single or three phase — pay only when satisfied.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div><b>Priyal Industry</b> • <%= site.address2 %> • B2B + B2C</div>
+    <div class="muted">© 2026 • <%= site.timings %></div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
