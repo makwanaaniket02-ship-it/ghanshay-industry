@@ -270,6 +270,12 @@ footer{background:var(--dark);color:#D9D2C2;padding:26px 0 20px;border-top:4px s
   .mini-form{flex-direction:column}
   .nav-cta .btn-whatsapp{display:none}
   .logo{font-size:17px}
+  /* Mobile: long text short (detail page par aakhu lakhano malse) */
+  .sub{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .machine-row p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .mr-points{gap:6px 12px}
+  .mr-points li{font-size:13px}
+  .box ul li,.check-list li{font-size:14px}
 }
 
 /* ---------- Reduced motion ---------- */
