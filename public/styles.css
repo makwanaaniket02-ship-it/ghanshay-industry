@@ -52,6 +52,8 @@ h1,h2,h3,.logo{font-family:var(--font-head)}
 .logo .mark{width:36px;height:36px;border-radius:8px;background:var(--amber);color:#0E2A47;display:inline-flex;align-items:center;justify-content:center}
 .logo .mark .ic{width:22px;height:22px}
 .logo small{display:block;font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:.22em;color:#8FA3B8}
+.logo-text{font-size:21px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+@media(max-width:560px){.logo-text{font-size:17px}}
 .links{display:flex;gap:2px}
 .links a{color:#C9D6E2;text-decoration:none;font-size:15px;font-weight:600;padding:10px 13px;border-radius:6px;min-height:44px;display:inline-flex;align-items:center;transition:color .18s,background .18s}
 .links a:hover{color:var(--amber);background:rgba(255,255,255,.06)}
