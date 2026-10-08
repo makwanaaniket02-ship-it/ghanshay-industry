@@ -6,6 +6,7 @@
 <title>Our Machines - <%= site.company %>, <%= site.city %></title>
 <meta name="description" content="All diamond processing machines by <%= site.company %>: <%= site.products.map(p=>p.name).join(', ') %>." />
 <link rel="stylesheet" href="/styles.css" />
+<link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
 
 <header class="header">
   <div class="container nav">
-    <a href="/" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <a href="/" class="logo"><img class="logo-img" src="<%= site.logo %>" alt="Priyal Industry logo" /></a>
     <nav class="links" id="navLinks" aria-label="Main menu">
       <a href="/">Home</a>
       <a href="/machines">Machines</a>

@@ -8,6 +8,7 @@
 // ============================================
 module.exports = {
   company: "Priyal Industry",
+  logo: "/images/logo.jpg",
   tagline: "Diamond processing machines — see the live demo before you decide.",
   address1: "Opp. Patel Wadi,",
   address2: "Dhasa Road, Damnagar, Gujarat",

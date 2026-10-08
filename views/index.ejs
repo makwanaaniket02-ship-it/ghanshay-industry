@@ -6,6 +6,7 @@
 <title><%= site.company %> | <%= site.city %> - Diamond Processing Machines</title>
 <meta name="description" content="<%= site.company %>, <%= site.city %> - <%= site.products.map(p=>p.name).join(', ') %>. Visit our workshop, see the live demo." />
 <link rel="stylesheet" href="/styles.css" />
+<link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,11 +19,10 @@
 
 <header class="header">
   <div class="container nav">
-    <a href="#home" class="logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg></span><span>Priyal<small>INDUSTRY • DAMNAGAR</small></span></a>
+    <a href="#home" class="logo"><img class="logo-img" src="<%= site.logo %>" alt="Priyal Industry logo" /></a>
     <nav class="links" id="navLinks" aria-label="Main menu">
       <a href="#home">Home</a>
       <a href="/machines">Machines</a>
-      <a href="#b2b-b2c">B2B / B2C</a>
       <a href="/book-visit">Book a Visit</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -55,7 +55,8 @@
           <tr><td>Monday – Saturday, evening</td><td>2:00 – 8:00 PM</td></tr>
           <tr><td>Sunday</td><td>Closed</td></tr>
         </table>
-        <p>Run by <b><%= site.owners[0] %></b> &amp; <b><%= site.owners[1] %></b><br/>Phone: <b><%= phoneDisplay %></b></p>
+        <p class="run-by">Run by<br/><b><%= site.owners[0] %></b><br/><b><%= site.owners[1] %></b></p>
+        <p>Phone: <b><%= phoneDisplay %></b></p>
         <div class="mini-form">
           <input id="quickMobile" placeholder="Your mobile number" maxlength="10" inputmode="numeric" aria-label="Your mobile number" />
           <button onclick="quickCallback()">Request callback</button>
@@ -85,33 +86,6 @@
       </div>
       <div class="cta-side">
         <a href="/machines" class="btn btn-primary">See all machines <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section alt" id="b2b-b2c">
-  <div class="container">
-    <span class="eyebrow">Who we sell to</span>
-    <h2>Factories and single buyers alike</h2>
-    <div class="two-col">
-      <div class="box">
-        <h3><svg class="ic" aria-hidden="true"><use href="#i-factory"/></svg>B2B — factories &amp; companies</h3>
-        <ul>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Better rates on bulk orders</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Billing, transport &amp; installation help</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Operator training + warranty</span></li>
-        </ul>
-        <a href="/book-visit?biz=B2B" class="btn btn-sm btn-primary">Book a B2B visit</a>
-      </div>
-      <div class="box">
-        <h3><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>B2C — single buyers &amp; artisans</h3>
-        <ul>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Single machines available</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>See the demo, then buy</span></li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Explained in plain language</span></li>
-        </ul>
-        <a href="/book-visit?biz=B2C" class="btn btn-sm btn-primary">Book a B2C visit</a>
       </div>
     </div>
   </div>
